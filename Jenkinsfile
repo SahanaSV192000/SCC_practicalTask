@@ -37,6 +37,13 @@ pipeline {
                 )
             }
         }
+        
+        stage('Docker Build') {
+            steps {
+                sh 'docker build --pull -t scc-practical-task:${BUILD_NUMBER} .'
+                sh 'docker image inspect scc-practical-task:${BUILD_NUMBER} > /dev/null'
+            }
+        }
     }
 
     post {
