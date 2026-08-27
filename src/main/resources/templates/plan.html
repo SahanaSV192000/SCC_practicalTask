@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-Day DevOps Training Plan</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f6;
+            color: #1f2933;
+        }
+
+        header {
+            padding: 30px 8%;
+            background: #123c35;
+            color: white;
+        }
+
+        main {
+            padding: 35px 8%;
+        }
+
+        a {
+            color: white;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            min-width: 1000px;
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 16px;
+            background: #176b55;
+            color: white;
+            text-align: left;
+        }
+
+        td {
+            padding: 18px 16px;
+            border-bottom: 1px solid #e1e8e4;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .day {
+            font-size: 22px;
+            font-weight: bold;
+            color: #176b55;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 11px 16px;
+            border-radius: 6px;
+            background: #176b55;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>5-Day DevOps Training Plan</h1>
+    <p>Learn the complete delivery flow from GitHub source control to production operations.</p>
+</header>
+
+<main>
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>Day</th>
+                <th>Skills to Build</th>
+                <th>Focus Area</th>
+                <th>Topics to Cover</th>
+                <th>Practical Task</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td class="day">Day 1</td>
+                <td>Understand DevOps workflows and source control practices</td>
+                <td>DevOps Foundations and Git</td>
+                <td>DevOps lifecycle, CI/CD overview, Git branching, pull requests, code review, release flow</td>
+                <td>Create a Git repository, use feature branches, raise a pull request, and merge using review rules.</td>
+            </tr>
+
+            <tr>
+                <td class="day">Day 2</td>
+                <td>Build automated validation pipelines</td>
+                <td>CI Pipeline and Build Automation</td>
+                <td>CI concepts, build stages, unit testing, linting, artifacts, pipeline triggers, quality gates</td>
+                <td>Create a CI pipeline that runs linting, unit tests, and generates a build artifact.</td>
+            </tr>
+
+            <tr>
+                <td class="day">Day 3</td>
+                <td>Package applications consistently</td>
+                <td>Docker and Containers</td>
+                <td>Dockerfile, image layers, container lifecycle, image tagging, registries, environment variables, container security</td>
+                <td>Dockerize the Java application and run it locally with the required configuration.</td>
+            </tr>
+
+            <tr>
+                <td class="day">Day 4</td>
+                <td>Deploy and manage applications in Kubernetes</td>
+                <td>Kubernetes and Deployment</td>
+                <td>Pods, deployments, services, config maps, secrets, namespaces, rolling updates, rollback, health checks</td>
+                <td>Deploy the containerized application to Kubernetes and expose it through a service.</td>
+            </tr>
+
+            <tr>
+                <td class="day">Day 5</td>
+                <td>Operate and maintain production-like systems</td>
+                <td>IaC, Monitoring, Security, and Troubleshooting</td>
+                <td>Terraform basics, cloud infrastructure, logging, metrics, alerting, secrets management, incident handling, RCA</td>
+                <td>Provision basic infrastructure, add monitoring, simulate failure, troubleshoot, and roll back.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a class="back-link" href="/">← Back to Home</a>
+</main>
+
+</body>
+</html>
