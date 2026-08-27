@@ -15,8 +15,7 @@ pipeline {
 
         stage('Build and Test') {
             steps {
-                sh 'chmod +x mvnw'
-                sh './mvnw -B clean test'
+                sh 'mvn -B clean test'
             }
 
             post {
@@ -31,7 +30,7 @@ pipeline {
 
         stage('Package') {
             steps {
-                sh './mvnw -B package -DskipTests'
+                sh 'mvn -B package -DskipTests'
                 archiveArtifacts(
                     artifacts: 'target/*.jar',
                     fingerprint: true
