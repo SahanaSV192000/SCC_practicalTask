@@ -20,4 +20,9 @@ public class HomeController {
     public String topics() {
         return "topics";
     }
+
+    @GetMapping("/practical")
+    public String practical() {
+        return "practical";
+    }
 }
