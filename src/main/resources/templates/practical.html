@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical DevOps Task</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f6;
+            color: #1f2933;
+        }
+
+        header {
+            padding: 35px 8%;
+            background: #123c35;
+            color: white;
+        }
+
+        main {
+            padding: 35px 8%;
+        }
+
+        .architecture,
+        .task-card,
+        .outcome,
+        .incident-note {
+            margin-bottom: 22px;
+            padding: 25px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+        }
+
+        .architecture h2,
+        .task-card h2,
+        .incident-note h2 {
+            color: #176b55;
+        }
+
+        .architecture-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .system {
+            min-width: 125px;
+            padding: 18px 12px;
+            border-radius: 8px;
+            background: #dcefe7;
+            color: #123c35;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .arrow {
+            color: #d86f3f;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .task-card li {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .commands {
+            padding: 18px;
+            overflow-x: auto;
+            border-radius: 7px;
+            background: #172b26;
+            color: #d9f1e3;
+            font-family: monospace;
+            line-height: 1.7;
+        }
+
+        .incident-note {
+            background: #fff9df;
+            border-left: 5px solid #e1bc35;
+        }
+
+        .incident-note p {
+            margin: 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eadb9d;
+        }
+
+        .outcome {
+            background: #176b55;
+            color: white;
+        }
+
+        .outcome h2 {
+            color: #f4d76a;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 11px 16px;
+            border-radius: 6px;
+            background: #176b55;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Practical Task: Build and Deploy a Simple Application</h1>
+    <p>
+        Create a complete delivery flow using GitHub, Jenkins, Docker, and Kubernetes.
+    </p>
+</header>
+
+<main>
+
+    <section class="architecture">
+        <h2>Target Architecture</h2>
+        <p>
+            A code change should travel through every stage before reaching the user.
+        </p>
+
+        <div class="architecture-flow">
+            <div class="system">GitHub<br><small>Source Code</small></div>
+            <div class="arrow">→</div>
+            <div class="system">Jenkins<br><small>CI Pipeline</small></div>
+            <div class="arrow">→</div>
+            <div class="system">Docker<br><small>Image Build</small></div>
+            <div class="arrow">→</div>
+            <div class="system">Registry<br><small>Image Storage</small></div>
+            <div class="arrow">→</div>
+            <div class="system">Kubernetes<br><small>Deployment</small></div>
+            <div class="arrow">→</div>
+            <div class="system">User<br><small>Application</small></div>
+        </div>
+    </section>
+
+    <section class="task-card">
+        <h2>Assignment Instructions</h2>
+
+        <ol>
+            <li>
+                Create a GitHub repository for the Java application.
+                Use a feature branch and create a pull request.
+            </li>
+
+            <li>
+                Add a Jenkins CI pipeline that checks out the code, runs tests,
+                packages the application, and produces a JAR artifact.
+            </li>
+
+            <li>
+                Create a Dockerfile and build a container image for the Java application.
+            </li>
+
+            <li>
+                Deploy the Docker image to a local Kubernetes cluster such as Minikube
+                or Docker Desktop Kubernetes.
+            </li>
+
+            <li>
+                Add basic health checks so Kubernetes can determine whether the
+                application is ready and running.
+            </li>
+
+            <li>
+                Simulate a failed deployment, detect the failure, and roll back to the
+                last working version.
+            </li>
+
+            <li>
+                Write a short incident note covering:
+                <ul>
+                    <li>What failed?</li>
+                    <li>How was the failure detected?</li>
+                    <li>How was it fixed or rolled back?</li>
+                    <li>What could prevent the issue in the future?</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <section class="task-card">
+        <h2>Suggested Local Commands</h2>
+
+        <div class="commands">
+            mvn clean test<br>
+            mvn package<br><br>
+
+            docker build -t scc-practical-task:1.0.0 .<br>
+            docker run -p 8080:8080 scc-practical-task:1.0.0<br><br>
+
+            kubectl apply -f k8s/<br>
+            kubectl get pods<br>
+            kubectl get services<br>
+            kubectl rollout status deployment/scc-practical-task<br><br>
+
+            kubectl logs deployment/scc-practical-task<br>
+            kubectl rollout undo deployment/scc-practical-task<br>
+            kubectl rollout status deployment/scc-practical-task
+        </div>
+    </section>
+
+    <section class="task-card">
+        <h2>Failure Simulation</h2>
+
+        <p>
+            To simulate a failed deployment, update the Kubernetes deployment to use
+            an invalid Docker image tag. Then observe the failure using:
+        </p>
+
+        <div class="commands">
+            kubectl get pods<br>
+            kubectl describe pod POD_NAME<br>
+            kubectl get events<br>
+            kubectl rollout status deployment/scc-practical-task
+        </div>
+
+        <p>
+            After collecting evidence, roll back:
+        </p>
+
+        <div class="commands">
+            kubectl rollout undo deployment/scc-practical-task<br>
+            kubectl rollout status deployment/scc-practical-task
+        </div>
+    </section>
+
+    <section class="incident-note">
+        <h2>Required Incident Note</h2>
+
+        <p><strong>What failed:</strong></p>
+        <p><strong>How was it detected:</strong></p>
+        <p><strong>How was it fixed or rolled back:</strong></p>
+        <p><strong>What could prevent it in the future:</strong></p>
+    </section>
+
+    <section class="outcome">
+        <h2>Expected Outcome</h2>
+
+        <p>
+            By the end of this assignment, the engineer should demonstrate a working
+            GitHub-to-Jenkins CI/CD flow, a containerized Java application, a Kubernetes
+            deployment with health checks, and the ability to troubleshoot and roll back
+            a failed release.
+        </p>
+    </section>
+
+    <a class="back-link" href="/">← Back to Home</a>
+
+</main>
+
+</body>
+</html>
