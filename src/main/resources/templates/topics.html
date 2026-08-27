@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Topics</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f6;
+            color: #1f2933;
+        }
+
+        header {
+            padding: 30px 8%;
+            background: #123c35;
+            color: white;
+        }
+
+        main {
+            padding: 35px 8%;
+        }
+
+        .topic {
+            margin-bottom: 16px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+        }
+
+        summary {
+            color: #176b55;
+            font-size: 19px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .topic-content {
+            margin-top: 18px;
+            line-height: 1.6;
+        }
+
+        .topic-content h3 {
+            color: #176b55;
+        }
+
+        .topic-content li {
+            margin-bottom: 8px;
+        }
+
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .step {
+            padding: 12px 16px;
+            border-radius: 6px;
+            background: #dcefe7;
+            color: #123c35;
+            font-weight: bold;
+        }
+
+        .arrow {
+            color: #d86f3f;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 11px 16px;
+            border-radius: 6px;
+            background: #176b55;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Specific DevOps Topics</h1>
+    <p>Select a topic to read its explanation, key points, and working flow.</p>
+</header>
+
+<main>
+
+    <details class="topic" open>
+        <summary>DevOps Practices</summary>
+        <div class="topic-content">
+            <p>
+                DevOps combines development and operations so teams can deliver software
+                quickly, reliably, and safely.
+            </p>
+            <ul>
+                <li>Encourage collaboration between development and operations.</li>
+                <li>Automate repetitive tasks.</li>
+                <li>Use shift-left testing to find defects earlier.</li>
+                <li>Continuously improve through feedback and retrospectives.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Plan</span>
+                <span class="arrow">→</span>
+                <span class="step">Build</span>
+                <span class="arrow">→</span>
+                <span class="step">Test</span>
+                <span class="arrow">→</span>
+                <span class="step">Release</span>
+                <span class="arrow">→</span>
+                <span class="step">Improve</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Source Control and GitHub</summary>
+        <div class="topic-content">
+            <p>
+                Git records application changes and GitHub provides collaboration,
+                pull requests, reviews, and repository management.
+            </p>
+            <ul>
+                <li>Create short-lived feature branches.</li>
+                <li>Use clear and meaningful commit messages.</li>
+                <li>Open pull requests for code review.</li>
+                <li>Protect the main branch with review and build rules.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Feature Branch</span>
+                <span class="arrow">→</span>
+                <span class="step">Commit</span>
+                <span class="arrow">→</span>
+                <span class="step">Pull Request</span>
+                <span class="arrow">→</span>
+                <span class="step">Review</span>
+                <span class="arrow">→</span>
+                <span class="step">Merge</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>CI/CD and Jenkins</summary>
+        <div class="topic-content">
+            <p>
+                Continuous integration automatically validates every code change.
+                Continuous delivery prepares successful changes for deployment.
+            </p>
+            <ul>
+                <li>Trigger Jenkins when code is pushed to GitHub.</li>
+                <li>Compile the application and run unit tests.</li>
+                <li>Create a build artifact such as a JAR file.</li>
+                <li>Stop the pipeline when a quality gate fails.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">GitHub Push</span>
+                <span class="arrow">→</span>
+                <span class="step">Jenkins</span>
+                <span class="arrow">→</span>
+                <span class="step">Test</span>
+                <span class="arrow">→</span>
+                <span class="step">Build JAR</span>
+                <span class="arrow">→</span>
+                <span class="step">Deploy</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Containers and Docker</summary>
+        <div class="topic-content">
+            <p>
+                Docker packages the application and its runtime requirements into a
+                portable image.
+            </p>
+            <ul>
+                <li>Use a suitable and small base image.</li>
+                <li>Build images using a Dockerfile.</li>
+                <li>Tag images with a version number.</li>
+                <li>Never store passwords or secrets in an image.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Java Code</span>
+                <span class="arrow">→</span>
+                <span class="step">Dockerfile</span>
+                <span class="arrow">→</span>
+                <span class="step">Image</span>
+                <span class="arrow">→</span>
+                <span class="step">Registry</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Kubernetes</summary>
+        <div class="topic-content">
+            <p>
+                Kubernetes manages containers and keeps the desired number of healthy
+                application instances running.
+            </p>
+            <ul>
+                <li>Deployments manage replicas and rolling updates.</li>
+                <li>Services provide stable network access.</li>
+                <li>ConfigMaps store non-sensitive configuration.</li>
+                <li>Secrets store sensitive configuration.</li>
+                <li>Readiness and liveness probes verify application health.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Deployment</span>
+                <span class="arrow">→</span>
+                <span class="step">Pods</span>
+                <span class="arrow">→</span>
+                <span class="step">Health Checks</span>
+                <span class="arrow">→</span>
+                <span class="step">Service</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Infrastructure as Code</summary>
+        <div class="topic-content">
+            <p>
+                Infrastructure as Code defines infrastructure using version-controlled
+                files instead of manual console changes.
+            </p>
+            <ul>
+                <li>Use variables for environment-specific values.</li>
+                <li>Use outputs to expose useful resource information.</li>
+                <li>Use modules to reuse infrastructure patterns.</li>
+                <li>Protect Terraform state from accidental changes.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Terraform Code</span>
+                <span class="arrow">→</span>
+                <span class="step">Plan</span>
+                <span class="arrow">→</span>
+                <span class="step">Review</span>
+                <span class="arrow">→</span>
+                <span class="step">Apply</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Cloud Basics</summary>
+        <div class="topic-content">
+            <p>
+                AWS provides compute, networking, storage, identity, and security
+                services that can host the delivery platform.
+            </p>
+            <ul>
+                <li>EC2 provides virtual servers.</li>
+                <li>VPC provides network isolation.</li>
+                <li>S3 provides object storage.</li>
+                <li>IAM controls access to AWS resources.</li>
+                <li>Security groups act as virtual firewalls.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">User</span>
+                <span class="arrow">→</span>
+                <span class="step">VPC</span>
+                <span class="arrow">→</span>
+                <span class="step">Security Group</span>
+                <span class="arrow">→</span>
+                <span class="step">EC2</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Security</summary>
+        <div class="topic-content">
+            <p>
+                Security should be included throughout the delivery lifecycle rather
+                than added only before production.
+            </p>
+            <ul>
+                <li>Scan dependencies for known vulnerabilities.</li>
+                <li>Scan container images before deployment.</li>
+                <li>Use least-privilege IAM access.</li>
+                <li>Store secrets outside source code.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Code</span>
+                <span class="arrow">→</span>
+                <span class="step">Dependency Scan</span>
+                <span class="arrow">→</span>
+                <span class="step">Image Scan</span>
+                <span class="arrow">→</span>
+                <span class="step">Secure Deploy</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Observability</summary>
+        <div class="topic-content">
+            <p>
+                Observability helps engineers understand system behavior using logs,
+                metrics, dashboards, and alerts.
+            </p>
+            <ul>
+                <li>Logs explain individual events.</li>
+                <li>Metrics show trends and system health.</li>
+                <li>Dashboards present important signals.</li>
+                <li>Alerts notify the responsible team when action is needed.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Application</span>
+                <span class="arrow">→</span>
+                <span class="step">Logs and Metrics</span>
+                <span class="arrow">→</span>
+                <span class="step">Dashboard</span>
+                <span class="arrow">→</span>
+                <span class="step">Alert</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Troubleshooting</summary>
+        <div class="topic-content">
+            <p>
+                Troubleshooting should be evidence-based. Start with the symptom,
+                inspect logs and events, test a hypothesis, and document the result.
+            </p>
+            <ul>
+                <li>Check Jenkins console output for pipeline failures.</li>
+                <li>Check Kubernetes pod status and events.</li>
+                <li>Read application logs before changing configuration.</li>
+                <li>Write a blameless root-cause analysis.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Symptom</span>
+                <span class="arrow">→</span>
+                <span class="step">Evidence</span>
+                <span class="arrow">→</span>
+                <span class="step">Hypothesis</span>
+                <span class="arrow">→</span>
+                <span class="step">Fix</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Release Management</summary>
+        <div class="topic-content">
+            <p>
+                Release management provides a controlled process for versioning,
+                deploying, communicating, and recovering from application changes.
+            </p>
+            <ul>
+                <li>Use consistent version numbers.</li>
+                <li>Write release notes.</li>
+                <li>Choose rolling, blue-green, or canary deployment strategies.</li>
+                <li>Prepare a rollback plan before deployment.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Version</span>
+                <span class="arrow">→</span>
+                <span class="step">Release Notes</span>
+                <span class="arrow">→</span>
+                <span class="step">Deploy</span>
+                <span class="arrow">→</span>
+                <span class="step">Verify</span>
+                <span class="arrow">→</span>
+                <span class="step">Rollback if Needed</span>
+            </div>
+        </div>
+    </details>
+
+    <details class="topic">
+        <summary>Documentation</summary>
+        <div class="topic-content">
+            <p>
+                Documentation makes operational knowledge available to the whole team
+                during deployments, incidents, and handovers.
+            </p>
+            <ul>
+                <li>Maintain deployment notes.</li>
+                <li>Write runbooks for common incidents.</li>
+                <li>Record incident timelines and root causes.</li>
+                <li>Update documents after every failure drill.</li>
+            </ul>
+
+            <div class="flow">
+                <span class="step">Document</span>
+                <span class="arrow">→</span>
+                <span class="step">Share</span>
+                <span class="arrow">→</span>
+                <span class="step">Operate</span>
+                <span class="arrow">→</span>
+                <span class="step">Improve</span>
+            </div>
+        </div>
+    </details>
+
+    <a class="back-link" href="/">← Back to Home</a>
+
+</main>
+
+</body>
+</html>
