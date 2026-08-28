@@ -9,6 +9,8 @@ RUN mvn clean package
 
 FROM eclipse-temurin:21-jre-alpine
 
+RUN apk upgrade --no-cache
+
 WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
