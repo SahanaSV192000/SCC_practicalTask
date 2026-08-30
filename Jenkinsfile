@@ -10,6 +10,7 @@ pipeline {
         ECR_REGISTRY = '656446902704.dkr.ecr.us-east-1.amazonaws.com'
         ECR_REPOSITORY = 'scc-practical-task'
         KUBECONFIG = '/var/lib/jenkins/.kube/config'
+        K8S_NAMESPACE = 'scc-practical-task'
     }
     stages {
         stage('Checkout') {
@@ -86,6 +87,33 @@ pipeline {
 
                     docker push \
                     "$ECR_REGISTRY/$ECR_REPOSITORY:${BUILD_NUMBER}"
+                '''
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh '''
+                    set -eu
+
+                    kubectl create namespace "$K8S_NAMESPACE" \
+                    --dry-run=client -o yaml | kubectl apply -f -
+
+                    ECR_PASSWORD="$(aws ecr get-login-password --region "$AWS_REGION")"
+
+                    kubectl create secret docker-registry ecr-registry \
+                    --namespace "$K8S_NAMESPACE" \
+                    --docker-server="$ECR_REGISTRY" \
+                    --docker-username=AWS \
+                    --docker-password="$ECR_PASSWORD" \
+                    --dry-run=client -o yaml | kubectl apply -f -
+
+                    sed "s|IMAGE_PLACEHOLDER|$ECR_REGISTRY/$ECR_REPOSITORY:$BUILD_NUMBER|g" \
+                    k8s/app.yaml | kubectl apply -f -
+
+                    kubectl rollout status deployment/scc-practical-task \
+                    --namespace "$K8S_NAMESPACE" \
+                    --timeout=180s
                 '''
             }
         }
