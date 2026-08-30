@@ -9,6 +9,7 @@ pipeline {
         AWS_REGION = 'us-east-1'
         ECR_REGISTRY = '656446902704.dkr.ecr.us-east-1.amazonaws.com'
         ECR_REPOSITORY = 'scc-practical-task'
+        KUBECONFIG = '/var/lib/jenkins/.kube/config'
     }
     stages {
         stage('Checkout') {
